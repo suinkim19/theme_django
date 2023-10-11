@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    {% load static %} {% load plotly_dash %}
+    <title>TeamnameLLM - Theme Network Visualization</title>
+    <!-- Favicon-->
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="{% static 'assets/favicon.ico' %}"
+    />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/font.css' %}" rel="stylesheet" />
+
+    <style>
+          .themenetwork {
+        position: relative;
+        width: 100%;
+        height: 2000px; /* 원하는 높이값으로 설정하세요 */
+    }
+
+    .themenetwork iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+    }
+
+    .week-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.week-button {
+    padding: 10px 20px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f4f4f4;
+    text-align: center;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.week-button:hover {
+    background-color: #ddd;
+    transform: scale(1.05);
+}
+  </style>
+  </head>
+  <body>
+    <!-- Responsive navbar-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+        <a class="navbar-brand" href="#"
+          >LLM을 이용한 주식 테마 탐지 및 테마 네트워크 서비스 개발</a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="">Home</a>
+              </li>
+              <li class="nav-item dropdown">
+                  <a
+                      class="nav-link dropdown-toggle"
+                      id="navbarDropdown"
+                      href="#"
+                      role="button"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                  >주차 선택</a>
+                  <ul
+                      class="dropdown-menu dropdown-menu-end"
+                      aria-labelledby="navbarDropdown"
+                  >
+                      <li><a class="dropdown-item" href="june_week1">6월 1주차</a></li>
+                      <li><a class="dropdown-item" href="june_week2">6월 2주차</a></li>
+                      <li><a class="dropdown-item" href="june_week3">6월 3주차</a></li>
+                      <li><a class="dropdown-item" href="aug_week1">8월 1주차</a></li>
+                      <li><a class="dropdown-item" href="aug_week2">8월 2주차</a></li>
+                      <li><a class="dropdown-item" href="sep_week4">9월 4주차</a></li>
+                  </ul>
+              </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- Page content-->
+    <div class="container">
+      <div class="text-center mt-5">
+        <h1 style="font-family: 'The jamsil ExtraBold', sans-serif;">테마빛나비 : 주식 테마 네트워크 시각화 서비스 입니다.</h1>
+        <p class="lead" style="font-family: 'The jamsil Bold', sans-serif;">원하는 주차를 선택하세요.</p>
+      </div>
+      <!-- 그래프를 표시하는 부분을 가로로 2분할하기 위한 컨테이너 -->
+      <div class="week-buttons">
+        <div class="week-button" onclick="redirectToWeek('june_week1')" style="font-family: 'The jamsil Bold', sans-serif;">6월 1주차</div>
+        <div class="week-button" onclick="redirectToWeek('june_week2')" style="font-family: 'The jamsil Bold', sans-serif;">6월 2주차</div>
+        <div class="week-button" onclick="redirectToWeek('june_week3')" style="font-family: 'The jamsil Bold', sans-serif;">6월 3주차</div>
+        <div class="week-button" onclick="redirectToWeek('aug_week1')" style="font-family: 'The jamsil Bold', sans-serif;">8월 1주차</div>
+        <div class="week-button" onclick="redirectToWeek('aug_week2')" style="font-family: 'The jamsil Bold', sans-serif;">8월 2주차</div>
+        <div class="week-button" onclick="redirectToWeek('sep_week4')" style="font-family: 'The jamsil Bold', sans-serif;">9월 4주차</div>
+    </div>
+
+    <script>
+        function redirectToWeek(week) {
+            window.location.href = `/${week}/`;
+        }
+    </script>
+    
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="{% static 'js/scripts.js' %}"></script>
+  </body>
+</html>
